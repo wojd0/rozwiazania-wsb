@@ -1,6 +1,6 @@
 ﻿namespace zaj4;
 
-class Zadanie1
+class Program
 {
     static void Zadanie()
     {
