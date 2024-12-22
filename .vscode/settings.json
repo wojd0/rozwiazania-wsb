@@ -1,0 +1,7 @@
+{
+    "github.copilot.chat.codeGeneration.instructions": [
+        {
+            "text": "Always write console written instructions, comments, variable and method names in Polish."
+        }
+    ]
+}
