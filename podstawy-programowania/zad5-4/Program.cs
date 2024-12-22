@@ -7,7 +7,7 @@
         static void Main(string[] args)
         {
             bool running = true;
-            Console.Clear();
+
             while (running)
             {
                 Console.WriteLine();
@@ -19,7 +19,13 @@
                 Console.WriteLine("4. Następny do lekarza PROSZĘ");
                 Console.WriteLine("5. Zakończ program");
                 Console.Write("Wybierz opcję: ");
-                string opcja = Console.ReadLine();
+                string? opcja = Console.ReadLine();
+
+                if (opcja == null)
+                {
+                    Console.WriteLine("Nieprawidłowa opcja, spróbuj ponownie.");
+                    continue;
+                }
 
                 switch (opcja)
                 {
@@ -49,7 +55,14 @@
         {
             Console.Clear();
             Console.Write("Podaj imię osoby: ");
-            string imie = Console.ReadLine();
+            string? imie = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(imie))
+            {
+                Console.WriteLine("Imię nie może być puste.");
+                return;
+            }
+
             kolejka.Enqueue(imie);
             Console.WriteLine($"{imie} dodany(a) do kolejki.");
         }
@@ -75,7 +88,14 @@
         {
             Console.Clear();
             Console.Write("Podaj imię osoby, która chce opuścić kolejkę: ");
-            string imie = Console.ReadLine();
+            string? imie = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(imie))
+            {
+                Console.WriteLine("Imię nie może być puste.");
+                return;
+            }
+
             if (kolejka.Contains(imie))
             {
                 var tempQueue = new Queue<string>();

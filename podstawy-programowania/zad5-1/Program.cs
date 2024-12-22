@@ -5,12 +5,18 @@
         static void Main(string[] args)
         {
             List<double> oceny = new List<double>();
-            string wejscie;
+            string? wejscie; // Zmieniono na nullable
             Console.WriteLine("Wprowadź oceny (wpisz 'koniec' aby zakończyć):");
 
             while (true)
             {
                 wejscie = Console.ReadLine();
+                if (wejscie == null) // Sprawdzenie null
+                {
+                    Console.WriteLine("Nieprawidłowe dane. Proszę wprowadzić prawidłową ocenę.");
+                    continue;
+                }
+
                 if (wejscie.ToLower() == "koniec")
                     break;
 
@@ -30,7 +36,9 @@
                 oceny.Remove(oceny.Min());
 
                 double srednia = oceny.Average();
-                Console.WriteLine($"Ocena semestralna to: {srednia}");
+                double ocenaSemestralna = PrzeliczNaOcene(srednia);
+                Console.WriteLine($"Średnia ocen to: {srednia}");
+                Console.WriteLine($"Ocena semestralna to: {ocenaSemestralna}");
             }
             else
             {
@@ -64,6 +72,17 @@
             }
 
             return false;
+        }
+
+        static double PrzeliczNaOcene(double srednia)
+        {
+            if (srednia >= 4.75) return 5.0;
+            if (srednia >= 4.25) return 4.5;
+            if (srednia >= 3.75) return 4.0;
+            if (srednia >= 3.25) return 3.5;
+            if (srednia >= 2.75) return 3.0;
+            if (srednia >= 2.25) return 2.5;
+            return 2.0;
         }
     }
 }

@@ -15,10 +15,10 @@ class Program
 
         // Pobieranie kodu koszulki od użytkownika
         Console.WriteLine("Podaj kod koszulki:");
-        string kodKoszulki = Console.ReadLine();
+        string? kodKoszulki = Console.ReadLine()?.ToUpper();
 
-        // Wyświetlanie nazwy rozmiaru na podstawie kodu
-        if (rozmiaryKoszulek.ContainsKey(kodKoszulki))
+        // Sprawdzanie, czy kodKoszulki nie jest null
+        if (kodKoszulki != null && rozmiaryKoszulek.ContainsKey(kodKoszulki))
         {
             Console.WriteLine("Rozmiar koszulki: " + rozmiaryKoszulek[kodKoszulki]);
         }
